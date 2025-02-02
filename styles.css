@@ -23,6 +23,7 @@ body {
   min-height: 90vh;
   box-sizing: border-box;
   transition: background-color 0.3s ease, background 0.3s ease;
+  position: relative; /* Ajout pour le positionnement des effets */
 }
 
 #pokemon-selection {
@@ -252,6 +253,25 @@ button:hover {
   pointer-events: none;
 }
 
+#fire-image {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#thunder-image, #fire-image {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+  transform-origin: center center;
+}
+
+#fire-image img {
+  width: 150px;  /* Même largeur que le conteneur pokemon */
+  height: 150px; /* Même hauteur que le conteneur pokemon */
+  object-fit: contain;
+}
+
 /* Modifier l'animation pour Feu d'Enfer */
 @keyframes fireBlast {
   0% { 
@@ -307,5 +327,14 @@ button:hover {
   #log {
     max-height: 100px;
     font-size: 0.9em;
+  }
+
+  .pokemon-container {
+    position: relative;
+    margin: 20px auto;
+  }
+  
+  #thunder-image, #fire-image {
+    transform: translateX(-50%); /* Centre l'effet horizontalement */
   }
 }

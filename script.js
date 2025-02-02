@@ -203,16 +203,23 @@ function animateAttack(attackerImg, attackName) {
   if (effectImage) {
     effectImage.style.display = 'block';
     const rect = defenderImg.getBoundingClientRect();
+    const gameRect = document.getElementById("game").getBoundingClientRect();
     
-    // Ajuster la position pour centrer l'effet
+    // Position relative au conteneur #game
+    const relativeTop = rect.top - gameRect.top;
+    const relativeLeft = rect.left - gameRect.left;
+    
+    effectImage.style.position = 'absolute';
+    effectImage.style.top = `${relativeTop}px`;
+    effectImage.style.left = `${relativeLeft}px`;
+    
+    // Ajuster les dimensions en fonction de l'attaque
     if (attackName === "Feu d'Enfer") {
-      effectImage.style.top = `${rect.top}px`;
-      effectImage.style.left = `${rect.left}px`;
       effectImage.style.width = `${rect.width}px`;
       effectImage.style.height = `${rect.height}px`;
     } else {
-      effectImage.style.top = `${rect.top}px`;
-      effectImage.style.left = `${rect.left}px`;
+      effectImage.style.width = '100px';
+      effectImage.style.height = 'auto';
     }
     
     setTimeout(() => {
