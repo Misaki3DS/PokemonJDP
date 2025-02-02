@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combat Pokémon</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="game" class="bg-pattern1">
+    <h1>Combat Pokémon</h1>
+    <span><button id="restart-btn" style="display:none;" onclick="window.location.reload()">Recommencer</button></span>
+    <div id="pokemon-selection">
+      <div class="pokemon-side">
+        <h2>Pikachu (Joueur)</h2>
+        <!-- Bouton affichant son type -->
+        <button id="player-type-btn" style="background-color: #ffeb3b; color: #000; margin-bottom: 10px;">Electrik</button>
+        <p id="hp1">
+          PV : <span class="hp-bar" id="hp-bar1"><span id="hp-bar-inner1"></span></span>
+          <span id="hp1-pct">100%</span>
+        </p>
+        <div class="pokemon-container">
+          <img id="pokemon1-img" src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/pikachu.gif" alt="Pokémon 1" class="pokemon-img">
+        </div>
+        <!-- Indication puissance / précision -->
+        <button class="attack-btn" data-attack="Étincelle">Étincelle (65 / 100%)</button>
+        <button class="attack-btn" data-attack="Cage-Éclair">Cage-Éclair (soutien / 90%)</button>
+        <button class="attack-btn" data-attack="Reflet">Reflet (soutien)</button>
+        <button class="attack-btn" data-attack="Fatal-Foudre">Fatal-Foudre (110 / 70%)</button>
+      </div>
+      <div class="vs-container">
+        <h2>VS</h2>
+      </div>
+      <div class="pokemon-side">
+        <h2>Salamèche (Adversaire)</h2>
+        <!-- Bouton affichant son type -->
+        <button id="opponent-type-btn" style="background-color: #f44336; color: #fff; margin-bottom: 10px;">Feu</button>
+        <p id="hp2">
+          PV : <span class="hp-bar" id="hp-bar2"><span id="hp-bar-inner2"></span></span>
+          <span id="hp2-pct">100%</span>
+        </p>  
+        <div class="pokemon-container">
+          <img id="pokemon2-img" src="https://img.pokemondb.net/sprites/black-white/anim/normal/charmander.gif" alt="Pokémon 2" class="pokemon-img">
+        </div>      
+      </div>
+    </div>
+    <div id="thunder-image" style="display: none;">
+      <img src="images/thunder.png" alt="Foudre" style="position: absolute; width: 100px; height: auto;">
+    </div>
+    <div id="fire-image" style="display: none;">
+      <img src="images/fire.gif" alt="Feu" style="position: absolute; width: 100px; height: auto;">
+    </div>
+    <div id="log"></div>
+    <!-- Icône pour choisir la musique -->
+    <button id="music-btn" title="Changer la musique">
+      🎵
+    </button>
+    <button id="background-btn" title="Changer le fond">
+      🎨
+    </button>
+  </div>
+  <!-- Fichiers audio -->
+  <audio id="background-music" loop>
+    <source src="audio/default.mp3" type="audio/mp3">
+    Votre navigateur ne supporte pas le format audio.
+  </audio>
+  <audio id="attack-sound">
+    <source src="audio/attack.mp3" type="audio/mp3">
+    Votre navigateur ne supporte pas le format audio.
+  </audio>
+  <audio id="fatal-foudre-sound">
+    <source src="audio/fatal-foudre.mp3" type="audio/mp3">
+    Votre navigateur ne supporte pas le format audio.
+  </audio>
+  <audio id="victory-music">
+    <source src="audio/victory.mp3" type="audio/mp3">
+    Votre navigateur ne supporte pas le format audio.
+  </audio>
+  <audio id="fire-blast-sound">
+    <source src="audio/fire-blast.mp3" type="audio/mp3">
+    Votre navigateur ne supporte pas le format audio.
+  </audio>
+  <script src="script.js"></script>
+</body>
+</html>

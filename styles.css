@@ -1,0 +1,311 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, background 0.3s ease;
+}
+
+#game {
+  max-width: 800px;
+  width: 100%;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, background 0.3s ease;
+}
+
+#pokemon-selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex: 1;
+  gap: 10px;
+  min-height: 0;
+  overflow: auto;
+}
+
+.pokemon-side {
+  flex: 1;
+  min-width: 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pokemon-side h2 {
+  font-size: 1.2em;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.vs-container {
+  flex: 0;
+  margin: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  background: #57aed1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #3a8eba;
+}
+
+#log {
+  margin-top: 15px;
+  padding: 10px;
+  background: #e8e8e8;
+  border-radius: 5px;
+  height: 60px;
+  overflow-y: scroll; /* Permet le défilement vertical */
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+
+#log p {
+  margin: 0;
+  padding: 2px 0;
+}
+
+.pokemon-container {
+  position: relative;
+  height: 150px;
+  width: 150px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#pokemon1-img.attack-animation {
+  transform: translateX(20px);
+  transition: transform 0.3s ease;
+}
+
+#pokemon2-img.attack-animation {
+  transform: translateX(-20px);
+  transition: transform 0.3s ease;
+}
+
+.attack-btn {
+  padding: 8px;
+  margin: 3px;
+  font-size: 0.9em;
+  white-space: normal;
+  width: calc(100% - 6px);
+}
+
+.attack-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.hp-bar {
+  display: inline-block;
+  width: 100%;
+  max-width: 100px;
+  height: 15px;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+}
+
+.hp-bar span {
+  display: block;
+  height: 100%;
+  background-color: #4caf50; /* Vert par défaut */
+  width: 100%; /* Valeur initiale */
+  transition: width 0.3s ease; /* Animation fluide */
+}
+
+#player-type-btn, #opponent-type-btn {
+  width: auto;
+  min-width: 80px;
+  padding: 5px 15px;
+  margin: 5px auto;
+  display: inline-block;
+}
+
+#music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 24px;
+  padding: 10px;
+  background: #57aed1;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#music-btn:hover {
+  background: #3a8eba;
+}
+
+/* Backgrounds patterns */
+#game.bg-pattern1 {
+  background: linear-gradient(45deg, rgba(255, 138, 0, 0.2) 25%, transparent 25%),
+              linear-gradient(-45deg, rgba(255, 138, 0, 0.2) 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, rgba(255, 138, 0, 0.2) 75%),
+              linear-gradient(-45deg, transparent 75%, rgba(255, 138, 0, 0.2) 75%);
+  background-size: 20px 20px;
+  background-color: rgba(255, 183, 0, 0.2);
+}
+
+#game.bg-pattern2 {
+  background: 
+    radial-gradient(circle at 0% 50%, rgba(96, 16, 48, 0) 9px, rgba(102, 17, 51, 0.2) 10px, rgba(96, 16, 48, 0) 11px) 0px 10px,
+    radial-gradient(at 100% 100%, rgba(96, 16, 48, 0) 9px, rgba(102, 17, 51, 0.2) 10px, rgba(96, 16, 48, 0) 11px);
+  background-size: 20px 20px;
+  background-color: rgba(138, 36, 76, 0.2);
+}
+
+/* Nouveau motif Bleu - Vagues */
+#game.bg-pattern3 {
+  background: 
+    radial-gradient(circle at 100% 50%, transparent 20%, rgba(0, 150, 255, 0.2) 21%, rgba(0, 150, 255, 0.2) 34%, transparent 35%, transparent),
+    radial-gradient(circle at 0% 50%, transparent 20%, rgba(0, 150, 255, 0.2) 21%, rgba(0, 150, 255, 0.2) 34%, transparent 35%, transparent);
+  background-size: 50px 25px;
+  background-color: rgba(176, 229, 255, 0.2);
+}
+
+/* Nouveau motif Vert - Feuilles */
+#game.bg-pattern4 {
+  background:
+    linear-gradient(135deg, rgba(76, 175, 80, 0.2) 25%, transparent 25%) -10px 0,
+    linear-gradient(225deg, rgba(76, 175, 80, 0.2) 25%, transparent 25%) -10px 0,
+    linear-gradient(315deg, rgba(76, 175, 80, 0.2) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(76, 175, 80, 0.2) 25%, transparent 25%);
+  background-size: 20px 20px;
+  background-color: rgba(200, 230, 201, 0.2);
+}
+
+/* Nouveau motif Violet - Étoiles */
+#game.bg-pattern5 {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(156, 39, 176, 0.2) 3px, transparent 4px),
+    radial-gradient(circle at 20% 20%, rgba(156, 39, 176, 0.2) 3px, transparent 4px),
+    radial-gradient(circle at 80% 80%, rgba(156, 39, 176, 0.2) 3px, transparent 4px);
+  background-size: 30px 30px;
+  background-color: rgba(225, 190, 231, 0.2);
+}
+
+#background-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-size: 24px;
+  padding: 10px;
+  background: #57aed1;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#background-btn:hover {
+  background: #3a8eba;
+}
+
+/* Animation pour Fatal-Foudre */
+@keyframes fatalFoudre {
+  0% { transform: translateY(-100px); opacity: 0; }
+  50% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100px); opacity: 0; }
+}
+
+.fatal-foudre-animation {
+  animation: fatalFoudre 0.5s ease-in-out;
+}
+
+#thunder-image {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Modifier l'animation pour Feu d'Enfer */
+@keyframes fireBlast {
+  0% { 
+    transform: translateX(-100px) scale(0.5);
+    opacity: 0; 
+  }
+  50% { 
+    transform: translateX(0) scale(1);
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(100px) scale(0.5);
+    opacity: 0; 
+  }
+}
+
+.fire-blast-animation {
+  animation: fireBlast 0.8s ease-in-out;
+}
+
+#fire-image {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#fire-image img {
+  width: 150px;  /* Même largeur que le conteneur pokemon */
+  height: 150px; /* Même hauteur que le conteneur pokemon */
+  object-fit: contain;
+}
+
+/* Ajoutez d'autres animations ici */
+
+@media (max-width: 600px) {
+  #pokemon-selection {
+    flex-direction: column;
+  }
+
+  .pokemon-side {
+    width: 100%;
+  }
+
+  .vs-container {
+    display: none;
+  }
+
+  .attack-btn {
+    font-size: 0.8em;
+    padding: 6px;
+  }
+
+  #log {
+    max-height: 100px;
+    font-size: 0.9em;
+  }
+}
