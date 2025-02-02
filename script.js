@@ -105,6 +105,12 @@ function getHPColor(percentage) {
     }
 }  
 
+const supportDescriptions = {
+  "Cage-Éclair": "Paralyse l'adversaire, l'empêchant parfois d'attaquer.",
+  "Reflet": "Augmente l'esquive du joueur.",
+  "Rugissement": "Réduit la puissance d'attaque de l'adversaire."
+};
+
 function addLog(message, targetName = null, targetHP = null) {
     if (targetName !== null && targetHP < 0) {
         message += ` (${targetName} : 0 PV restants)`;
@@ -113,6 +119,12 @@ function addLog(message, targetName = null, targetHP = null) {
         message += ` (${targetName} : ${targetHP} PV restants)`;
     }
     
+    // Ajouter les descriptions aux noms des attaques dans les logs
+    Object.keys(supportDescriptions).forEach(attack => {
+      const regex = new RegExp(`\\b${attack}\\b`, 'g');
+      message = message.replace(regex, `<span title="${supportDescriptions[attack]}">${attack}</span>`);
+    });
+
     // Ajouter le nouveau message sans supprimer l'historique
     log.innerHTML += `<p>${message}</p>`;
     
