@@ -338,3 +338,81 @@ button:hover {
     transform: translateX(-50%); /* Centre l'effet horizontalement */
   }
 }
+
+/* Modifier les styles du conteneur de statut */
+.status-container {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.status-indicator {
+  display: inline-flex;
+  padding: 2px 6px;
+  background: #ffd700;
+  color: #000;
+  border-radius: 4px;
+  font-size: 0.8em;
+}
+
+/* Assurer que le conteneur des PV s'aligne correctement */
+#hp2 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.status-container {
+  min-height: 20px;
+  margin-bottom: 5px;
+}
+
+.status-indicator {
+  display: inline-block;
+  padding: 2px 6px;
+  background: #ffd700;
+  color: #000;
+  border-radius: 4px;
+  font-size: 0.8em;
+  margin-right: 5px;
+}
+
+.paralyzed {
+  background: #ffd700;
+}
+
+/* Modifier les styles pour centrer les barres de PV */
+#hp1, #hp2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.hp-bar {
+  display: inline-block;
+  width: 100%;
+  max-width: 100px;
+  height: 15px;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+}
+
+/* Maintenir la responsivité */
+@media (max-width: 600px) {
+  #hp1, #hp2 {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .hp-bar {
+    max-width: 80px;
+  }
+}

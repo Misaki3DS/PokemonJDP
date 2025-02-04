@@ -95,6 +95,15 @@ function updateHP() {
   document.getElementById("hp2-pct").textContent = `${Math.floor(hp2)}/${pokemonStats[opponent].hp}`;
 }
 
+function updateStatus() {
+  const statusContainer = document.getElementById("opponent-status");
+  if (isOpponentParalyzed) {
+    statusContainer.innerHTML = '<span class="status-indicator paralyzed">PAR</span>';
+  } else {
+    statusContainer.innerHTML = '';
+  }
+}
+
 function getHPColor(percentage) {
     if (percentage > 50) {
       return "#4caf50"; // Vert
@@ -276,6 +285,7 @@ function applyAttack(attacker, defender, attackName) {
       thunderCageButton.style.cursor = "not-allowed";
       addLog(`${attacker} utilise Cage-Éclair !`);
       addLog(`${defender} est paralysé !`);
+      updateStatus(); // Ajout de cette ligne
       return -1;
     }
     return 0;
