@@ -453,6 +453,12 @@ attackButtons.forEach((btn) => {
         addLog(`${player} a vaincu ${opponent} !`);
         playVictoryMusic();
         addLog("RÉPONSE : Pierre eau");
+        
+        // Attendre la fin de l'animation de la barre HP (300ms par défaut)
+        setTimeout(() => {
+          alert("RÉPONSE : Pierre eau");
+        }, 1000);
+        
         return; // Fin de combat
       }
   
